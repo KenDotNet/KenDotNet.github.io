@@ -511,9 +511,9 @@ function updatePositions() {
    * Grab list and do math calc before starting loop.
    */
   var items = document.querySelectorAll('.mover');
-  var sinShift = Math.sin((document.body.scrollTop / 1250);
+  var width = (document.body.scrollTop / 1250);
   for (var i = 0; i < items.length; i++) {
-    var phase = sinShift + (i % 5));
+    var phase = Math.sin(width + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
