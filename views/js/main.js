@@ -455,9 +455,9 @@ var resizePizzas = function(size) {
      * since all pizzas are same size.
      */
     var elementList = document.querySelectorAll(".randomPizzaContainer");
+    var dx = determineDx(elementList[0], size);
+    var newwidth = (elementList[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < elementList.length; i++) {
-      var dx = determineDx(elementList[i], size);
-      var newwidth = (elementList[i].offsetWidth + dx) + 'px';
       elementList[i].style.width = newwidth;
     }
   }
@@ -507,9 +507,13 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  /*
+   * Grab list and do math calc before starting loop.
+   */
   var items = document.querySelectorAll('.mover');
+  var sinShift = Math.sin((document.body.scrollTop / 1250);
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = sinShift + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
